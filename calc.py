@@ -28,7 +28,7 @@ def evaluate(tokens):
 	
 	try:
 		while i < len(tokens):
-			# Current token is a whitespace, # skip it.
+			# if current token is a whitespace, # skip it.
 			if tokens[i] == ' ':
 				i += 1
 				continue
@@ -41,20 +41,14 @@ def evaluate(tokens):
 			elif tokens[i].isdigit():
 				val = 0
 
-				# There may be more than one
-				# digits in the number.
-				"""while (i < len(tokens) and
-					tokens[i].isdigit()):
-				
-					val = (val * 10) + int(tokens[i])
-					i += 1"""
-				
+				# There may be more than one, digits in the number.
 				while (i < len(tokens) and (tokens[i].isdigit() or tokens[i] == ".")):
-					#print(tokens[i])
+					#detecting the point
 					if tokens[i] == ".":
 						i += 1
 						k = i
 						y = 1
+						#looping through the floating point numbers and adding them.
 						while (k < len(tokens) and tokens[k].isdigit()):
 							y = y * 10
 							val = val + (float(tokens[k]) * (1/y))
@@ -95,10 +89,7 @@ def evaluate(tokens):
 				# token, which is an operator.
 				# Apply operator on top of 'ops'
 				# to top two elements in values stack.
-				while (len(ops) != 0 and
-					precedence(ops[-1]) >=
-					precedence(tokens[i])):
-							
+				while (len(ops) != 0 and precedence(ops[-1]) >= precedence(tokens[i])):		
 					val2 = values.pop()
 					val1 = values.pop()
 					op = ops.pop()
@@ -131,7 +122,7 @@ if __name__ == "__main__":
 		val = input("Enter your expression: ")
 		
 		if(val == 'exit'):
-			print('Thank you! Come again')
+			print('Calculator terminated')
 			break
 		else:
 			result = evaluate(val)
