@@ -13,7 +13,7 @@ def applyOp(x, y, operation):
     if operation == '+': return x + y
     if operation == '-': return x - y
     if operation == '*': return x * y
-    if operation == '/': return x // y
+    if operation == '/': return x / y
     if operation == '^': return pow(x,y)
 
 # Function that returns value of expression after evaluation.
